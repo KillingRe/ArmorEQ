@@ -1,0 +1,93 @@
+armor:
+    quartz:
+        material: Quartz
+        color: lime
+        durability: 10
+        lore:
+        PROTECTION_ENVIRONMENTAL: 10
+        PROTECTION_PROJECTILE: 0
+        PROTECTION_EXPLOSIONS: 0
+        PROTECTION_FIRE: 0
+        THORNS: 0
+        head:
+            durability: 10
+            lore:
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+        chest:
+            durability: 10
+            lore:
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+        leggings:
+            durability: 10
+            lore:
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+        boots:
+            durability: 10
+            lore:
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+            
+            
+            
+    emerald:
+        material: Emerald
+        color: RichLime
+        head:
+            durability: 10
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+            lore:
+        chest:
+            durability: 10
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                DURABILITY : 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+            lore:
+        leggings:
+            durability: 10
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                DURABILITY : 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+            lore:
+        boots:
+            durability: 10
+            enchantments:
+                PROTECTION_ENVIRONMENTAL: 10
+                DURABILITY : 10
+                PROTECTION_PROJECTILE: 0
+                PROTECTION_EXPLOSIONS: 0
+                PROTECTION_FIRE: 0
+                THORNS: 0
+            lore:
+            

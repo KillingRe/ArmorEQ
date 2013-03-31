@@ -1,11 +1,6 @@
 package net.bless.armoreq;
- 
-import java.util.ArrayList;
-import java.util.List;
- 
 
 import org.bukkit.Material;
-
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -13,43 +8,23 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import net.bless.armoreq.ArmorP;
 public class ArmorEQ extends JavaPlugin
 implements Listener
 {
-        public static Plugin plugin;  // for storing a global link to this plugin (used in ArmorP)
- 
+    public static Plugin plugin;  // for storing a global link to this plugin (used in ArmorP)
+
     @Override
     public void onEnable() {  
         ArmorEQ.plugin = this;    
-    getConfig().options().copyDefaults(true);
-    saveConfig();
-    addRecipes();
- 
-        if (!getConfig().contains("armor.emerald.enchantment.level")) {
-            getConfig().createSection("armor.emerald.enchantment.level");
-            }
-        }
- 
-        private void addRecipes() {
-        List<String> lore = new ArrayList<String>();
-        lore.add("Blah");
-        ArmorP quartzArmor = ArmorP.getArmor("Quartz");
- 
-//new ArmorP("Quartz", Material.QUARTZ, Color.WHITE, (short) -2500, lore, );
- 
- //       List<String> lore2 = new ArrayList<String>();
-  //      lore2.add("Blah");
-  //      ArmorP emeraldArmor = new ArmorP("Emerald", Material.EMERALD, Color.LIME, (short) -2000, //lore2, Enchantment.DURABILITY, 20);
- 
-        if (quartzArmor != null) {
-                createLeatherArmourRecipes(quartzArmor);
-        } else {
-                // send message to console saying error reading armor
-                // TODO: better to give a more specific message in the armorp.getarmor() function
-        }
-  //      createLeatherArmourRecipes(emeraldArmor);
- 
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        addRecipes();
+    }
+
+    private void addRecipes() {
+        createLeatherArmourRecipes(ArmorP.getArmor("Quartz"));
+        createLeatherArmourRecipes(ArmorP.getArmor("Emerald"));
+
         ItemStack is5 = new ItemStack(Material.IRON_SWORD, 1);
         ItemMeta im5 = is5.getItemMeta();
         im5.setDisplayName("Quartz Sword");
@@ -60,7 +35,7 @@ implements Listener
         quartzsword.setIngredient('*', Material.QUARTZ);
         quartzsword.setIngredient('s', Material.STICK);
         this.getServer().addRecipe(quartzsword);
-       
+
         ItemStack is11 = new ItemStack(Material.IRON_AXE, 1);
         ItemMeta im11 = is11.getItemMeta();
         im11.setDisplayName("Quartz Axe");
@@ -71,7 +46,7 @@ implements Listener
         quartzaxe.setIngredient('*', Material.QUARTZ);
         quartzaxe.setIngredient('s', Material.STICK);
         this.getServer().addRecipe(quartzaxe);
-       
+
         ItemStack is12 = new ItemStack(Material.IRON_HOE, 1);
         ItemMeta im12 = is12.getItemMeta();
         im12.setDisplayName("Quartz Hoe");
@@ -82,7 +57,7 @@ implements Listener
         quartzhoe.setIngredient('*', Material.QUARTZ);
         quartzhoe.setIngredient('s', Material.STICK);
         this.getServer().addRecipe(quartzhoe);
-       
+
         ItemStack is13 = new ItemStack(Material.IRON_PICKAXE, 1);
         ItemMeta im13 = is13.getItemMeta();
         im13.setDisplayName("Quartz PickAxe");
@@ -93,7 +68,7 @@ implements Listener
         quartzpickaxe.setIngredient('*', Material.QUARTZ);
         quartzpickaxe.setIngredient('s', Material.STICK);
         this.getServer().addRecipe(quartzpickaxe);
-       
+
         ItemStack is14 = new ItemStack(Material.IRON_SPADE, 1);
         ItemMeta im14 = is14.getItemMeta();
         im14.setDisplayName("Quartz PickAxe");
@@ -104,9 +79,9 @@ implements Listener
         quartzspade.setIngredient('*', Material.QUARTZ);
         quartzspade.setIngredient('s', Material.STICK);
         this.getServer().addRecipe(quartzspade);
- 
+
     }
- 
+
     private void createLeatherArmourRecipes(ArmorP Armor) {
         System.out.println("creatuerecipes");
         createLeatherPiece("Helm", new String[] { "   ", "*%*", "* *" },
@@ -118,7 +93,7 @@ implements Listener
         createLeatherPiece("ChestPlate", new String[] { "* *", "*%*", "***" },
                 Material.LEATHER_CHESTPLATE, Armor);
     }
- 
+
     private void createLeatherPiece(String suffix, String[] shape,
             Material item, ArmorP armor) {
         System.out.println("createpiece " + armor.toString());
@@ -129,13 +104,13 @@ implements Listener
         im.setColor(armor.color);
         is.setItemMeta(im);
         is.setDurability(armor.durability);
-        is.addUnsafeEnchantment(armor.ench, armor.enchLevel);
- 
+        ///is.addUnsafeEnchantment(armor.ench, armor.enchLevel);
+
         ShapedRecipe Armor = new ShapedRecipe(is);
         Armor.shape(shape);
         Armor.setIngredient('*', armor.recipeMat);
         Armor.setIngredient('%', Material.LEATHER);
         this.getServer().addRecipe(Armor);
     }
- 
+
 }
