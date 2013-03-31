@@ -1,4 +1,9 @@
 armor:
+    legendarydiamond:
+        material: Bedrock
+        color: black
+        durability: 10
+        lore: Yeeehaaa!
     quartz:
         material: Quartz
         color: lime
@@ -91,3 +96,15 @@ armor:
                 THORNS: 0
             lore:
             
+            
+            
+tools:
+    quartz:
+        material: Quartz
+        durability: 10
+        lore:
+        PROTECTION_ENVIRONMENTAL: 10
+        PROTECTION_PROJECTILE: 0
+        PROTECTION_EXPLOSIONS: 0
+        PROTECTION_FIRE: 0
+        THORNS: 0
