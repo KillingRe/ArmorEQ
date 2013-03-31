@@ -1,11 +1,17 @@
 package net.bless.armoreq;
 
-import org.bukkit.Material;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import net.bless.armoreq.recipes.DiamondArmorSet;
+import net.bless.armoreq.recipes.LeatherArmorSet;
+import net.bless.armoreq.recipes.ToolSet;
+
+import org.bukkit.Color;
+import org.bukkit.DyeColor;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 public class ArmorEQ extends JavaPlugin
@@ -16,107 +22,76 @@ implements Listener
     public static String pluginVersion; // for Log messages
 
     @Override
-    public void onEnable() {  
+    public void onEnable() {
+        // Getting ready! (prepare some variables for later use)
         ArmorEQ.plugin = this;    
         pluginName = this.getDescription().getName();
         pluginVersion = this.getDescription().getVersion();
         Log.setConfigVerbosity(getConfig());
         
-        getConfig().options().copyDefaults(true);
-        saveConfig();
+        // Using this "copy" code rather than "getConfig().options().copyDefaults(true); saveConfig();"
+        // as this code preserves comments and exact structure of the config.yml saved in the plugin jar
+        File file = new File(getDataFolder(), "config.yml");
+        if (!file.exists()) {
+            file.getParentFile().mkdirs();
+            copy(getResource("config.yml"), file);
+        }
+        
+        // Load up them recipes!
         addRecipes();
     }
-
+    
     private void addRecipes() {
-        createLeatherArmourRecipes(ArmorP.getArmor("Quartz"));
-        createLeatherArmourRecipes(ArmorP.getArmor("Emerald"));
-
-        ItemStack is5 = new ItemStack(Material.IRON_SWORD, 1);
-        ItemMeta im5 = is5.getItemMeta();
-        im5.setDisplayName("Quartz Sword");
-        is5.setDurability((short) -2000);
-        is5.setItemMeta(im5);
-        ShapedRecipe quartzsword = new ShapedRecipe(is5);
-        quartzsword.shape(" * ", " * ", " s ");
-        quartzsword.setIngredient('*', Material.QUARTZ);
-        quartzsword.setIngredient('s', Material.STICK);
-        this.getServer().addRecipe(quartzsword);
-
-        ItemStack is11 = new ItemStack(Material.IRON_AXE, 1);
-        ItemMeta im11 = is11.getItemMeta();
-        im11.setDisplayName("Quartz Axe");
-        is11.setDurability((short) -2000);
-        is11.setItemMeta(im11);
-        ShapedRecipe quartzaxe = new ShapedRecipe(is11);
-        quartzaxe.shape("** ", "*s ", " s ");
-        quartzaxe.setIngredient('*', Material.QUARTZ);
-        quartzaxe.setIngredient('s', Material.STICK);
-        this.getServer().addRecipe(quartzaxe);
-
-        ItemStack is12 = new ItemStack(Material.IRON_HOE, 1);
-        ItemMeta im12 = is12.getItemMeta();
-        im12.setDisplayName("Quartz Hoe");
-        is12.setDurability((short) -2000);
-        is12.setItemMeta(im12);
-        ShapedRecipe quartzhoe = new ShapedRecipe(is12);
-        quartzhoe.shape("** ", " s ", " s ");
-        quartzhoe.setIngredient('*', Material.QUARTZ);
-        quartzhoe.setIngredient('s', Material.STICK);
-        this.getServer().addRecipe(quartzhoe);
-
-        ItemStack is13 = new ItemStack(Material.IRON_PICKAXE, 1);
-        ItemMeta im13 = is13.getItemMeta();
-        im13.setDisplayName("Quartz PickAxe");
-        is13.setDurability((short) -2000);
-        is13.setItemMeta(im13);
-        ShapedRecipe quartzpickaxe = new ShapedRecipe(is13);
-        quartzpickaxe.shape(" * ", " * ", " s ");
-        quartzpickaxe.setIngredient('*', Material.QUARTZ);
-        quartzpickaxe.setIngredient('s', Material.STICK);
-        this.getServer().addRecipe(quartzpickaxe);
-
-        ItemStack is14 = new ItemStack(Material.IRON_SPADE, 1);
-        ItemMeta im14 = is14.getItemMeta();
-        im14.setDisplayName("Quartz PickAxe");
-        is14.setDurability((short) -2000);
-        is14.setItemMeta(im14);
-        ShapedRecipe quartzspade = new ShapedRecipe(is14);
-        quartzspade.shape(" * ", " s ", " s ");
-        quartzspade.setIngredient('*', Material.QUARTZ);
-        quartzspade.setIngredient('s', Material.STICK);
-        this.getServer().addRecipe(quartzspade);
-
+        LeatherArmorSet.loadSet("Quartz");
+        LeatherArmorSet.loadSet("Emerald");
+        DiamondArmorSet.loadSet("Legendary Diamond");
+        ToolSet.loadSet("Quartz");
+    }
+    
+    /** 
+     *  getColorFrom(string) - obtain "Rich" colors from org.bukkit.Color
+     *  otherwise match using DyeColor.  (needed as there is no way to 
+     *  go from the string directly to a "Color").  Will eventually support
+     *  "R/G/B" format.
+     *  
+     * @author zarius
+     * @param sub
+     * @return
+     */
+    public static Color getColorFrom(String sub) {
+        Color color = null;
+        if (sub.matches("(?i)RICH.*")) {
+            if (sub.equalsIgnoreCase("RICHGREEN")) {
+                color = Color.GREEN;
+            } else if (sub.equalsIgnoreCase("RICHRED")) {
+                color = Color.RED;
+            } else if (sub.equalsIgnoreCase("RICHBLUE")) {
+                color = Color.BLUE;
+            } else if (sub.equalsIgnoreCase("RICHLIME")) {
+                color = Color.LIME;
+            } else if (sub.equalsIgnoreCase("RICHYELLOW")) {
+                color = Color.YELLOW;
+            }
+        } else {
+            // FIXME: add ability to use Color values too - they are
+            // richer/stronger colors
+            color = DyeColor.valueOf(sub.toUpperCase()).getColor();
+        }
+        return color;
     }
 
-    private void createLeatherArmourRecipes(ArmorP Armor) {
-        Log.high("Starting to create armor pieces.");
-        createLeatherPiece("Helm", new String[] { "   ", "*%*", "* *" },
-                Material.LEATHER_HELMET, Armor);
-        createLeatherPiece("Leggings", new String[] { "***", "% %", "* *" },
-                Material.LEATHER_LEGGINGS, Armor);
-        createLeatherPiece("Boots", new String[] { "   ", "* *", "% %" },
-                Material.LEATHER_BOOTS, Armor);
-        createLeatherPiece("ChestPlate", new String[] { "* *", "*%*", "***" },
-                Material.LEATHER_CHESTPLATE, Armor);
+    private void copy(InputStream in, File file) {
+        try {
+            OutputStream out = new FileOutputStream(file);
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            out.close();
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    private void createLeatherPiece(String suffix, String[] shape,
-            Material item, ArmorP armor) {
-        Log.high("Creating armour piece ("+item.toString()+")");
-        ItemStack is = new ItemStack(item, 1);
-        LeatherArmorMeta im = (LeatherArmorMeta) is.getItemMeta();
-        im.setDisplayName(armor.name + " " + suffix);
-        im.setLore(armor.lore);
-        im.setColor(armor.color);
-        is.setItemMeta(im);
-        is.setDurability(armor.durability);
-        ///is.addUnsafeEnchantment(armor.ench, armor.enchLevel);
-
-        ShapedRecipe Armor = new ShapedRecipe(is);
-        Armor.shape(shape);
-        Armor.setIngredient('*', armor.recipeMat);
-        Armor.setIngredient('%', Material.LEATHER);
-        this.getServer().addRecipe(Armor);
-    }
-
 }
