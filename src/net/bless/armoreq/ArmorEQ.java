@@ -11,11 +11,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ArmorEQ extends JavaPlugin
 implements Listener
 {
-    public static Plugin plugin;  // for storing a global link to this plugin (used in ArmorP)
+    public static Plugin plugin;        // for storing a global link to this plugin (used in ArmorP)
+    public static String pluginName;    // for Log messages
+    public static String pluginVersion; // for Log messages
 
     @Override
     public void onEnable() {  
         ArmorEQ.plugin = this;    
+        pluginName = this.getDescription().getName();
+        pluginVersion = this.getDescription().getVersion();
+        Log.setConfigVerbosity(getConfig());
+        
         getConfig().options().copyDefaults(true);
         saveConfig();
         addRecipes();
@@ -83,7 +89,7 @@ implements Listener
     }
 
     private void createLeatherArmourRecipes(ArmorP Armor) {
-        System.out.println("creatuerecipes");
+        Log.high("Starting to create armor pieces.");
         createLeatherPiece("Helm", new String[] { "   ", "*%*", "* *" },
                 Material.LEATHER_HELMET, Armor);
         createLeatherPiece("Leggings", new String[] { "***", "% %", "* *" },
@@ -96,7 +102,7 @@ implements Listener
 
     private void createLeatherPiece(String suffix, String[] shape,
             Material item, ArmorP armor) {
-        System.out.println("createpiece " + armor.toString());
+        Log.high("Creating armour piece ("+item.toString()+")");
         ItemStack is = new ItemStack(item, 1);
         LeatherArmorMeta im = (LeatherArmorMeta) is.getItemMeta();
         im.setDisplayName(armor.name + " " + suffix);

@@ -1,5 +1,6 @@
 package net.bless.armoreq;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Color;
@@ -22,28 +23,55 @@ public class ArmorP {
     }
 
     private static ArmorP readConfigValues(String name) {
+        Log.normal("Loading recipie ("+name+")");
         ArmorP armor = new ArmorP();
 
         armor.name = name;
         Integer enchLevel  = ArmorEQ.plugin.getConfig().getInt("armor."+name.toLowerCase()+".enchantment.level");
 
-        if (enchLevel == null) return null;
+        if (enchLevel == null) {
+            Log.normal("Cannot read enchantment level.");
+            return null;
+        }
         armor.enchLevel = enchLevel;
 
         Material mat = Material.matchMaterial(ArmorEQ.plugin.getConfig().getString("armor."+name.toLowerCase()+".material"));
-        if (mat == null) return null;
+        if (mat == null) {
+            Log.normal("Cannot read material.");
+            return null;
+        }
         armor.recipeMat = mat;
 
         Integer durability = ArmorEQ.plugin.getConfig().getInt("armor."+name.toLowerCase()+".durability");
-        if (durability == null) return null;
+        if (durability == null) {
+            Log.normal("Cannot read durability.");
+            return null;
+        }
         armor.durability = durability.shortValue();
 
         String colorName = ArmorEQ.plugin.getConfig().getString("armor."+name.toLowerCase()+".color");
-        if (colorName == null) return null;
-
+        if (colorName == null) return null;        
         Color color = getColorFrom(colorName);
-        if (color == null) return null;		
+        if (color == null) {
+            Log.normal("Cannot read color.");
+            return null;
+        }
         armor.color = color;
+        
+        Object loreObj = ArmorEQ.plugin.getConfig().get("armor."+name.toLowerCase()+".lore");
+        List<String> lore = new ArrayList<String>();
+        
+        if (loreObj instanceof String) {
+            lore.add((String)loreObj);
+        } else if (loreObj instanceof List) {
+            lore.addAll((List<String>)loreObj);
+        }
+            
+        if (loreObj == null) {
+            Log.normal("Cannot read lore.");
+            return null;
+        }
+        armor.lore = lore;
 
         return armor;
     }
