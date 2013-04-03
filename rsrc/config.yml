@@ -106,7 +106,3 @@ tools:
         PROTECTION_EXPLOSIONS: 0
         PROTECTION_FIRE: 0
         THORNS: 0
-repair:
-    test:
-        nameOfItem: Quartz Sword
-        Default Durability: 2000
