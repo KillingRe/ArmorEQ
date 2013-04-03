@@ -1,0 +1,16 @@
+name: ArmorEQ
+main: net.bless.armoreq.ArmorEQ
+version: 0.1.41
+builddate: 2013/04/02 02:35
+author: Bless
+authors:
+  - Bless
+  - Zarius
+commands:
+    armoreq:
+        description: Create new armor
+        aliases: [aeq]
+        usage: |
+            ArmorEQ 
+            §7version: 0.1.41 built: 2013/04/02 02:35
+

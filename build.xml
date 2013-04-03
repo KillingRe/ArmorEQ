@@ -71,9 +71,9 @@
 
         <property name="debuglevel" value="source,lines" />
 
-        <target name="zarius">
+        <target name="bless">
             <property name="dependencies" value="dependencies" />
-            <property name="export-dir" value="/home/zarius/Games/Minecraft/Servers/Ifami/Testing/plugins/" />
+            <property name="export-dir" value="C:\Users\Re\Desktop\MindCraft Server\1.4.2 bukket dev\plugins" />
         </target>
 
         <!-- Default setting (if custom setting above not set) -->

@@ -26,7 +26,8 @@ public abstract class RecipeSet {
     public List<RecipeItem> items = new ArrayList<RecipeItem>();
     public Material[] itemMaterials;
     
-    public static RecipeSet readConfig(String name, RecipeSet set) {        
+    @SuppressWarnings("unchecked")
+	public static RecipeSet readConfig(String name, RecipeSet set) {        
         String prefix = "";
         if (set instanceof ToolSet) {
             prefix = "tools.";

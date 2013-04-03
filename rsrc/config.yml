@@ -1,13 +1,13 @@
 armor:
-    legendarydiamond:
+    legendary diamond:
         material: Bedrock
         color: black
-        durability: 10
+        durability: 0
         lore: Yeeehaaa!
     quartz:
         material: Quartz
-        color: lime
-        durability: 10
+        color: white
+        durability: 0
         lore:
         PROTECTION_ENVIRONMENTAL: 10
         PROTECTION_PROJECTILE: 0
@@ -15,7 +15,7 @@ armor:
         PROTECTION_FIRE: 0
         THORNS: 0
         head:
-            durability: 10
+            durability: 0
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -24,7 +24,7 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
         chest:
-            durability: 10
+            durability: 0
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -33,7 +33,7 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
         leggings:
-            durability: 10
+            durability: 0
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -42,7 +42,7 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
         boots:
-            durability: 10
+            durability: 0
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -57,7 +57,7 @@ armor:
         material: Emerald
         color: RichLime
         head:
-            durability: 10
+            durability: 0
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 PROTECTION_PROJECTILE: 0
@@ -66,7 +66,7 @@ armor:
                 THORNS: 0
             lore:
         chest:
-            durability: 10
+            durability: 0
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -76,7 +76,7 @@ armor:
                 THORNS: 0
             lore:
         leggings:
-            durability: 10
+            durability: 0
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -86,7 +86,7 @@ armor:
                 THORNS: 0
             lore:
         boots:
-            durability: 10
+            durability: 0
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -95,16 +95,18 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
             lore:
-            
-            
-            
+                
 tools:
     quartz:
         material: Quartz
-        durability: 10
+        durability: 0
         lore:
         PROTECTION_ENVIRONMENTAL: 10
         PROTECTION_PROJECTILE: 0
         PROTECTION_EXPLOSIONS: 0
         PROTECTION_FIRE: 0
         THORNS: 0
+repair:
+    test:
+        nameOfItem: Quartz Sword
+        Default Durability: 2000
