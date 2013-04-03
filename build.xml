@@ -73,7 +73,7 @@
 
         <target name="bless">
             <property name="dependencies" value="dependencies" />
-            <property name="export-dir" value="C:\Users\Re\Desktop\MindCraft Server\1.4.2 bukket dev\plugins" />
+            <property name="export-dir" value="MindCraft Server\bukket dev\plugins" />
         </target>
 
         <!-- Default setting (if custom setting above not set) -->
