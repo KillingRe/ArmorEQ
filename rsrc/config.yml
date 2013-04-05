@@ -16,9 +16,10 @@ armor:
         PROTECTION_FIRE: 0
         THORNS: 0
         head:
-            durability: &kd-2500
+            durability: &kd-2500 //skd is the lore for the durabiliy -2500 is the amount of durabiliy
+            qh: 5  //qh is the lore for the item 5 is the amount of armor points signed to item
             lore:
-            enchantments:
+            enchantments:  //enchantments can be removed once Neverdrops and changedamage is applyed 
                 PROTECTION_ENVIRONMENTAL: 10
                 PROTECTION_PROJECTILE: 0
                 PROTECTION_EXPLOSIONS: 0
@@ -26,6 +27,7 @@ armor:
                 THORNS: 0
         chest:
             durability: &kd-2500
+            qc: 14
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -35,6 +37,7 @@ armor:
                 THORNS: 0
         leggings:
             durability: &kd-2500
+            ql: 10
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -44,6 +47,7 @@ armor:
                 THORNS: 0
         boots:
             durability: &kd-2500
+            qb: 5
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -59,6 +63,7 @@ armor:
         color: RichLime
         head:
             durability: &kd-2000
+            eh: 4
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 PROTECTION_PROJECTILE: 0
@@ -68,6 +73,7 @@ armor:
             lore:
         chest:
             durability: &kd-2000
+            qc: 11
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -78,6 +84,7 @@ armor:
             lore:
         leggings:
             durability: &kd-2000
+            ql: 8
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -88,6 +95,7 @@ armor:
             lore:
         boots:
             durability: &kd-2000
+            qb: 4
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
