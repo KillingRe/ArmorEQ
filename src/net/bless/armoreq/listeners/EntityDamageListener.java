@@ -7,14 +7,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import net.bless.armoreq.ItemTagger;
-import net.bless.armoreq.ArmorEQ;
+import net.bless.armoreq.NeverBreak;
 //Code used from NeverBreak
 //Author thebiologist13
+//License
+//GNU General Public License
 public class EntityDamageListener implements Listener {
 
-	private ArmorEQ plugin = null;
+	private NeverBreak plugin = null;
 
-	public EntityDamageListener(ArmorEQ plugin) {
+	public EntityDamageListener(NeverBreak plugin) {
 		this.plugin = plugin;
 	}
 

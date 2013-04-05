@@ -4,13 +4,18 @@ import java.lang.reflect.Field;
 import net.minecraft.server.v1_5_R2.NBTTagCompound;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_5_R2.inventory.CraftItemStack;
+
+
 //Code used from NeverBreak
 //Author thebiologist13
+//License
+//GNU General Public License
+
 public class ItemTagger
 {
-  private final ArmorEQ PLUGIN;
+  private final NeverBreak PLUGIN;
 
-  public ItemTagger(ArmorEQ plugin)
+  public ItemTagger(NeverBreak plugin)
   {
     this.PLUGIN = plugin;
   }
@@ -36,9 +41,9 @@ public class ItemTagger
         handle.setData(0);
         return;
       }
-      int p = handle.tag.getInt("ArmorEQPrevious");
+      int p = handle.tag.getInt("NeverBreakPrevious");
       int y = handle.getData();
-      int n = handle.tag.getInt("ArmorEQUsage");
+      int n = handle.tag.getInt("NeverBreakUsage");
 
       if (p == y) {
         return;
@@ -75,8 +80,8 @@ public class ItemTagger
         handle.setData(0);
         return;
       }
-      int p = handle.tag.getInt("ArmorEQPrevious");
-      int n = handle.tag.getInt("ArmorEQUsage");
+      int p = handle.tag.getInt("NeverBreakPrevious");
+      int n = handle.tag.getInt("NeverBreakUsage");
 
       handle = applyTags(stack, p, n);
       handle.setData(p);
@@ -131,8 +136,8 @@ public class ItemTagger
   {
     net.minecraft.server.v1_5_R2.ItemStack nms = getHandle(stack);
     makeTag(nms);
-    nms.tag.setInt("ArmorEQPrevious", previous);
-    nms.tag.setInt("ArmorEQUsage", usage);
+    nms.tag.setInt("NeverBreakPrevious", previous);
+    nms.tag.setInt("NeverBreakUsage", usage);
     return nms;
   }
 
@@ -140,14 +145,14 @@ public class ItemTagger
   {
     net.minecraft.server.v1_5_R2.ItemStack nms = getHandle(stack);
     makeTag(nms);
-    return nms.tag.hasKey("ArmorEQkPrevious");
+    return nms.tag.hasKey("NeverBreakkPrevious");
   }
 
   private boolean hasUsageTag(org.bukkit.inventory.ItemStack stack) throws SecurityException, IllegalArgumentException, NoSuchFieldException, IllegalAccessException
   {
     net.minecraft.server.v1_5_R2.ItemStack nms = getHandle(stack);
     makeTag(nms);
-    return nms.tag.hasKey("ArmorEQUsage");
+    return nms.tag.hasKey("NeverBreakUsage");
   }
 
   private void makeTag(net.minecraft.server.v1_5_R2.ItemStack stack) {

@@ -2,12 +2,13 @@ armor:
     legendary diamond:
         material: Bedrock
         color: black
-        durability: 0
+        durability: &kd-4000
         lore: Yeeehaaa!
+        
     quartz:
         material: Quartz
         color: white
-        durability: 0
+        durability: &kd-2500
         lore:
         PROTECTION_ENVIRONMENTAL: 10
         PROTECTION_PROJECTILE: 0
@@ -15,7 +16,7 @@ armor:
         PROTECTION_FIRE: 0
         THORNS: 0
         head:
-            durability: 0
+            durability: &kd-2500
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -24,7 +25,7 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
         chest:
-            durability: 0
+            durability: &kd-2500
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -33,7 +34,7 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
         leggings:
-            durability: 0
+            durability: &kd-2500
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -42,7 +43,7 @@ armor:
                 PROTECTION_FIRE: 0
                 THORNS: 0
         boots:
-            durability: 0
+            durability: &kd-2500
             lore:
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
@@ -57,7 +58,7 @@ armor:
         material: Emerald
         color: RichLime
         head:
-            durability: 0
+            durability: &kd-2000
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 PROTECTION_PROJECTILE: 0
@@ -66,7 +67,7 @@ armor:
                 THORNS: 0
             lore:
         chest:
-            durability: 0
+            durability: &kd-2000
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -76,7 +77,7 @@ armor:
                 THORNS: 0
             lore:
         leggings:
-            durability: 0
+            durability: &kd-2000
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -86,7 +87,7 @@ armor:
                 THORNS: 0
             lore:
         boots:
-            durability: 0
+            durability: &kd-2000
             enchantments:
                 PROTECTION_ENVIRONMENTAL: 10
                 DURABILITY : 10
@@ -99,7 +100,7 @@ armor:
 tools:
     quartz:
         material: Quartz
-        durability: 0
+        durability: &kd-2500
         lore:
         PROTECTION_ENVIRONMENTAL: 10
         PROTECTION_PROJECTILE: 0
