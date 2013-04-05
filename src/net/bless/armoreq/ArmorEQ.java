@@ -18,7 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ArmorEQ extends JavaPlugin
 implements Listener
 {
-    public static Plugin plugin;        // for storing a global link to this plugin (used in ArmorP)
+    public static Plugin plugin;        // for storing a global link to this plugin (used in ArmorP).
     public static String pluginName;    // for Log messages
     public static String pluginVersion; // for Log messages
 
